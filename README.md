@@ -21,7 +21,7 @@ https://github.com/magento/magento2/issues/28055</p>
 <h3>Problema de barras '/' no Windows</h3>
 
 <p>Problem: 1 exception(s):
-Exception #0 (Magento\Framework\Exception\ValidatorException): Invalid template file: 'C:/xampp/htdocs/Hibrido/m235/vendor/magento/module-theme/view/frontend/templates/page/js/require_js.phtml' in module: '' block's name: 'require.js'
+Exception #0 (Magento\Framework\Exception\ValidatorException): Invalid template file: 'C:/laragon/www/teste/vendor/magento/module-theme/view/frontend/templates/page/js/require_js.phtml' in module: '' block's name: 'require.js'
 </p>
 <p>Solução:
 https://github.com/magento/magento2/issues/19480</p>
@@ -96,4 +96,9 @@ $ git remote add origin https://github.com/nanyzahn/teste-magento.git
 $ git push -u origin master </code></pre>
 ----------------
 
+<h2>7º Passo - Criar uma Branch para adicionar as novas funcionalidades </h2>
+
+<pre><code>git checkout -b dental
+git status
+</code></pre>
 
