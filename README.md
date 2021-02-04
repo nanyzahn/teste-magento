@@ -100,5 +100,6 @@ $ git push -u origin master </code></pre>
 
 <pre><code>git checkout -b dental
 git status
+git push --set-upstream origin dental
 </code></pre>
 
