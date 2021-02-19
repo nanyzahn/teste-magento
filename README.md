@@ -40,8 +40,8 @@ Exception #0 (Magento\Framework\Exception\ValidatorException): Invalid template 
 
 Comment the existing $realpath around line 138 and add the new $realPath</p>
 
-<code>//$realPath = $this->fileDriver->getRealPath($path);<br>
-$realPath = str_replace('\\', '/', $this->fileDriver->getRealPath($path));
+<code>//$realPath = $this->fileDriver->getRealPath($path);</code>
+<code>$realPath = str_replace('\\', '/', $this->fileDriver->getRealPath($path));
 </code>
 
 <h2>3º Passo - Instalação </h2>
