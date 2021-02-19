@@ -16,7 +16,19 @@ Comando usado:
 <p>ERRO: Unable to apply data patch Magento\Theme\Setup\Patch\Data\RegisterThemes for module Magento_Theme. Original exception message: Wrong file</p>
 
 <p>Solução:
-https://github.com/magento/magento2/issues/28055</p>
+</p>
+<p>Find validateURLScheme function in vendor\magento\framework\Image\Adapter\Gd2.php file. at line 96. Replace function with this:</p>
+
+private function validateURLScheme(string $filename) : bool
+  {
+      $allowed_schemes = ['ftp', 'ftps', 'http', 'https'];
+      $url = parse_url($filename);
+      if ($url && isset($url['scheme']) && !in_array($url['scheme'], $allowed_schemes) && !file_exists($filename)) {
+          return false;
+      }
+
+      return true;
+  }
 
 <h3>Problema de barras '/' no Windows</h3>
 
@@ -24,7 +36,13 @@ https://github.com/magento/magento2/issues/28055</p>
 Exception #0 (Magento\Framework\Exception\ValidatorException): Invalid template file: 'C:/laragon/www/teste/vendor/magento/module-theme/view/frontend/templates/page/js/require_js.phtml' in module: '' block's name: 'require.js'
 </p>
 <p>Solução:
-https://github.com/magento/magento2/issues/19480</p>
+</p>
+<p>or Windows, this is the workaround for now, modify this below file {Magento_Dir}\vendor\magento\framework\View\Element\Template\File\Validator.php
+
+Comment the existing $realpath around line 138 and add the new $realPath</p>
+
+//$realPath = $this->fileDriver->getRealPath($path);
+$realPath = str_replace('\\', '/', $this->fileDriver->getRealPath($path));
 
 
 <h2>3º Passo - Instalação </h2>
