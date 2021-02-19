@@ -26,8 +26,7 @@ Comando usado:
       if ($url && isset($url['scheme']) && !in_array($url['scheme'], $allowed_schemes) && !file_exists($filename)) {
           return false;
       }
-
-      return true;
+    return true;
   }
 </code>
 <h3>Problema de barras '/' no Windows</h3>
@@ -37,11 +36,11 @@ Exception #0 (Magento\Framework\Exception\ValidatorException): Invalid template 
 </p>
 <p>Solução:
 </p>
-<p>or Windows, this is the workaround for now, modify this below file {Magento_Dir}\vendor\magento\framework\View\Element\Template\File\Validator.php
+<p>For Windows, this is the workaround for now, modify this below file {Magento_Dir}\vendor\magento\framework\View\Element\Template\File\Validator.php
 
 Comment the existing $realpath around line 138 and add the new $realPath</p>
 
-<code>//$realPath = $this->fileDriver->getRealPath($path);
+<code>//$realPath = $this->fileDriver->getRealPath($path);<br>
 $realPath = str_replace('\\', '/', $this->fileDriver->getRealPath($path));
 </code>
 
