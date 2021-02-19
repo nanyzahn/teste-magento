@@ -19,7 +19,7 @@ Comando usado:
 </p>
 <p>Find validateURLScheme function in vendor\magento\framework\Image\Adapter\Gd2.php file. at line 96. Replace function with this:</p>
 
-private function validateURLScheme(string $filename) : bool
+<code>private function validateURLScheme(string $filename) : bool
   {
       $allowed_schemes = ['ftp', 'ftps', 'http', 'https'];
       $url = parse_url($filename);
@@ -29,7 +29,7 @@ private function validateURLScheme(string $filename) : bool
 
       return true;
   }
-
+</code>
 <h3>Problema de barras '/' no Windows</h3>
 
 <p>Problem: 1 exception(s):
@@ -41,9 +41,9 @@ Exception #0 (Magento\Framework\Exception\ValidatorException): Invalid template 
 
 Comment the existing $realpath around line 138 and add the new $realPath</p>
 
-//$realPath = $this->fileDriver->getRealPath($path);
+<code>//$realPath = $this->fileDriver->getRealPath($path);
 $realPath = str_replace('\\', '/', $this->fileDriver->getRealPath($path));
-
+</code>
 
 <h2>3º Passo - Instalação </h2>
 
